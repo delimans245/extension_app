@@ -1,0 +1,44 @@
+#input-el {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 4px;
+    min-width: 300px;
+}
+
+#save-el {
+    color: white;
+    background-color: #1E90FF;
+    border: none;
+    padding: 10px 20px;
+}
+
+#tab-el {
+    color: white;
+    background-color: #32CD32;
+    border: none;
+    padding: 10px 20px;
+}
+
+#delete-el {
+    color: white;
+    background-color: #FF6347;
+    border: none;
+    padding: 10px 20px;
+}
+
+#list-el {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+a {
+    text-decoration: none;
+    color: #1E90FF;
+}
+
+li {
+    margin: 5px 0;
+}
