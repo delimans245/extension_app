@@ -13,31 +13,28 @@ let inputEl = document.getElementById('input-el')
 let saveEl = document.getElementById('save-el')
 let deleteEl = document.getElementById('delete-el')
 let listEl = document.getElementById('list-el')
-let links = []
 
 
 deleteEl.addEventListener('dblclick', function() {
-    links = []
-    renderLinks()
+
 })
 
 
 saveEl.addEventListener('click', function() {
     let inputValue = inputEl.value
     if (inputValue) {
-        links.push(inputValue)
+        console.log(inputValue)
         inputEl.value = ''
-        renderLinks()
     }
 })
 
-function renderLinks() {
+function render(myLeads) {
     listEl.innerHTML = ''
-    for (let i = 0; i < links.length; i++) {
+    for (let i = 0; i < myLeads.length; i++) {
         listEl.innerHTML += `
             <li>
-                <a href="${links[i]}" target="_blank">
-                    ${links[i]}
+                <a href="${myLeads[i]}" target="_blank">
+                    ${myLeads[i]}
                 </a>
             </li>`
     }
