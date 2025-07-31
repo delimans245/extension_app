@@ -4,7 +4,7 @@ import { getDatabase,
          push } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js"
 
 const firebaseConfig = {
-    databaseURL: process.env.DATABASE_URL
+    databaseURL: "https://leads-tracker-app-122b0-default-rtdb.firebaseio.com/"
 }
 
 const app = initializeApp(firebaseConfig)
@@ -36,5 +36,6 @@ deleteBtn.addEventListener("dblclick", function() {
 
 inputBtn.addEventListener("click", function() {
     push(referenceInDB, inputEl.value)
+    // Challenge: Import the 'push' function and modify the line above to push inputEl.value to the referenceInDB in the database
     inputEl.value = ""
 })
