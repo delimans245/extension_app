@@ -1,41 +1,40 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js"
-import { getDatabase } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js"
+import { getDatabase,
+         ref,
+         push } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-database.js"
 
 const firebaseConfig = {
-    databaseURL: "https://leads-tracker-app-122b0-default-rtdb.firebaseio.com/",
+    databaseURL: process.env.DATABASE_URL
 }
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-console.log(database)
-  
-console.log(app)
-let inputEl = document.getElementById('input-el')
-let saveEl = document.getElementById('save-el')
-let deleteEl = document.getElementById('delete-el')
-let listEl = document.getElementById('list-el')
 
+const app = initializeApp(firebaseConfig)
+const database = getDatabase(app)
+const referenceInDB = ref(database, "leads")
 
-deleteEl.addEventListener('dblclick', function() {
+const inputEl = document.getElementById("input-el")
+const inputBtn = document.getElementById("input-btn")
+const ulEl = document.getElementById("ul-el")
+const deleteBtn = document.getElementById("delete-btn")
 
-})
-
-
-saveEl.addEventListener('click', function() {
-    let inputValue = inputEl.value
-    if (inputValue) {
-        console.log(inputValue)
-        inputEl.value = ''
-    }
-})
-
-function render(myLeads) {
-    listEl.innerHTML = ''
-    for (let i = 0; i < myLeads.length; i++) {
-        listEl.innerHTML += `
+function render(leads) {
+    let listItems = ""
+    for (let i = 0; i < leads.length; i++) {
+        listItems += `
             <li>
-                <a href="${myLeads[i]}" target="_blank">
-                    ${myLeads[i]}
+                <a target='_blank' href='${leads[i]}'>
+                    ${leads[i]}
                 </a>
-            </li>`
+            </li>
+        `
     }
+    ulEl.innerHTML = listItems
 }
+
+deleteBtn.addEventListener("dblclick", function() {
+    
+})
+
+inputBtn.addEventListener("click", function() {
+    push(referenceInDB, inputEl.value)
+    inputEl.value = ""
+})

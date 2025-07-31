@@ -6,7 +6,7 @@
     min-width: 300px;
 }
 
-#save-el {
+#input-btn {
     color: white;
     background-color: #1E90FF;
     border: none;
@@ -20,7 +20,7 @@
     padding: 10px 20px;
 }
 
-#delete-el {
+#delete-btn {
     color: white;
     background-color: #FF6347;
     border: none;
